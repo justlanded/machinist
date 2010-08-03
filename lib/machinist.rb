@@ -95,10 +95,11 @@ module Machinist
   # anything inside make_unsaved.
   def self.with_save_nerfed
     begin
+      old_nerfed = @@nerfed
       @@nerfed = true
       yield
     ensure
-      @@nerfed = false
+      @@nerfed = old_nerfed
     end
   end
 
